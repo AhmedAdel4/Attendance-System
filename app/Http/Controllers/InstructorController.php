@@ -36,7 +36,7 @@ class InstructorController extends Controller
     public function store(AddInstructorRequest $request)
     {
         $data = $request->validated();
-        $data->password = Hash::make($data->password);
+        $data['password'] = Hash::make($data['password']);
         User::insert($data);
         return redirect(route('Instructor.index'))->with('success','Data Saved Successfully');
     }
