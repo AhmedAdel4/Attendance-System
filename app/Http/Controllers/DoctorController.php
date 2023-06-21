@@ -110,17 +110,9 @@ class DoctorController extends Controller
             return $group->students->isNotEmpty();
         });
 
-        // return View('Instructor.front.printReport',['subject' => $subject,'user' => $user,'groups' => $groups,'weeks' => $weeks]);
         $pdf = Pdf::loadView('Instructor.front.printReport',['subject' => $subject,'user' => $user,'groups' => $groups,'weeks' => $weeks]);
         return $pdf->download($subject->nameEn.'.pdf');
 
-        // $html = view('Instructor.front.printReport',['subject' => $subject,'user' => $user,'groups' => $groups,'weeks' => $weeks])->render();
-        // $pdf = new TCPDF();
-        // $fileName = $subject->nameEn.'.pdf';
-        // $pdf->SetTitle($subject->nameEn.' Report');
-        // $pdf->AddPage();
-        // $pdf->writeHTML($html,true,false,true,false,"");
-        // $pdf->Output(public_path($fileName),"F");
-        // return response()->download(public_path($fileName));
+     
     }
 }
